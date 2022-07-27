@@ -1,0 +1,291 @@
+:root {
+  --white: #FFFFFF;
+  --black: #000000;
+  --very-light-pink: #C7C7C7;
+  --text-input-field: #F7F7F7;
+  --hospital-green: #ACD9B2;
+  --sm: 14px;
+  --md: 16px;
+  --lg: 18px;
+}
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--very-light-pink);
+}
+
+.inactive{/*Lo único que hará dicha clase será ponerle display none
+  esto será para que el elemento desaparezca, no se vea en lo abtoluto, como 
+  si no estuviera en dicho lugar(pensaba que esto era con position absolute o relative
+  pero no)*/
+  display: none;
+}
+.menu {
+  display: none;
+  cursor: pointer;
+}
+.logo {
+  width: 100px;
+}
+.navbar-left ul,
+.navbar-right ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+.navbar-left {
+  display: flex;
+}
+.navbar-left ul {
+  margin-left: 12px;
+}
+.navbar-left ul li a,
+.navbar-right ul li a {
+  text-decoration: none;
+  color: var(--very-light-pink);
+  border: 1px solid var(--white);
+  padding: 8px;
+  border-radius: 8px;
+}
+.navbar-left ul li a:hover,
+.navbar-right ul li a:hover {
+  border: 1px solid var(--hospital-green);
+  color: var(--hospital-green);
+}
+.navbar-email {
+  color: var(--very-light-pink);
+  font-size: var(--sm);
+  margin-right: 12px;
+  cursor: pointer;
+}
+.navbar-shopping-cart {
+  position: relative;
+}
+.navbar-shopping-cart div {
+  width: 16px;
+  height: 16px;
+  background-color: var(--hospital-green);
+  border-radius: 50%;
+  font-size: var(--sm);
+  font-weight: bold;
+  position: absolute;
+  top: -6px;
+  right: -3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*Estilos desktop menú*/
+.desktop-menu {
+  /*Le pondremos un position absolute, recordemos que en estos momentos
+  mi esa cosa que va a salir está rompiendo mi contenido porque está en 
+  el menú, con el position absolute es como si no estuviera ahí, lo que hará
+  será guardar la referencia de donde estaba y colocarse arriba*/
+  position: absolute;
+  /*top: 0;
+  right: 0;Top  y right para que mi elemento este hasta arriba, hasta la derecha*/
+  background-color: #fff;/*El background de este color para que literal se vea encimado
+  o sea no se transparente lo de abajo y se haga feo*/
+ top: 60px;/*Ahora, si no hay manera de medir el alto de la navegación porque el alto se definió por
+ otra cosa se puede activar el inspeccionador de elementos, posicionarnos sobre dicho elemento y
+ las herramientas del navegador harán todo lo demás por nosotros.
+ Que esto es decirnos las medidas de la navegación(alto y ancho)
+ */
+ right: 45px;
+  width: 100px;
+  height: auto;
+  border: 1px solid var(--very-light-pink);
+  border-radius: 6px;
+  padding: 20px 20px 0 20px;
+}
+.desktop-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.desktop-menu ul li {
+  text-align: end;
+}
+.desktop-menu ul li:nth-child(1),
+.desktop-menu ul li:nth-child(2) {
+  font-weight: bold;
+}
+.desktop-menu ul li:last-child {
+  padding-top: 20px;
+  border-top: 1px solid var(--very-light-pink);
+}
+.desktop-menu ul li:last-child a {
+  color: var(--hospital-green);
+  font-size: var(--sm);
+}
+.desktop-menu ul li a {
+  color: var(--back);
+  text-decoration: none;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+@media (max-width: 640px) {
+  .menu {
+    display: block;
+  }
+  .navbar-left ul {
+    display: none;
+  }
+  .navbar-email {
+    display: none;
+  }
+}
+
+/**/
+.mobile-menu {
+  padding: 24px;
+  position: absolute;
+  top: 60px;
+}
+@media(min-width: 640px){
+  .mobile-menu{ 
+    transform: translateX(-100%);
+   
+  }
+  /*Ahora, también quiero que esa mierda de 
+  desktop menú se quite cuando estoy en tamaño 
+  de celular*/
+  
+}
+
+@media(max-width: 641px){
+  .desktop-menu {
+    display: none;
+  }/*Nuevamente me confundí con los media jaja
+  ahora fue un error de escritura, pero cuando llegue
+  a la altura de 640px para abajo, quiero que se
+  desaparezca ese de desktop*/
+}
+/*Joooder, ese translate me saco dos ojos.
+
+Hice desparecer el menú mandándolo muuy lejos
+a un lado en un tamaño en específico*/
+.mobile-menu a {
+  text-decoration: none;
+  color: var(--black);
+  font-weight: bold;
+  /* margin-bottom: 24px; */
+}
+.mobile-menu ul {
+  padding: 0;
+  margin: 24px 0 0;
+  list-style: none;
+}
+.mobile-menu ul:nth-child(1) {
+  border-bottom: 1px solid var(--very-light-pink);
+}
+.mobile-menu ul li {
+  margin-bottom: 24px;
+}
+.email {
+  font-size: var(--sm);
+  font-weight: 300 !important;
+}
+.sign-out {
+  font-size: var(--sm);
+  color: var(--hospital-green) !important;
+}
+
+
+
+/*CARRITO DE COMPRAS*/
+.product-detail {
+  width: 360px;
+  padding: 0 24px;/*Primer cambio, el padding 
+  hacia arriba, no quiero que haya ese espacio*/
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+}
+
+.title-container {
+  display: flex;
+}
+.title-container img {
+  transform: rotate(180deg);
+  margin-right: 14px;
+}
+.title {
+  font-size: var(--lg);
+  font-weight: bold;
+}
+.order {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: center;
+  background-color: var(--text-input-field);
+  margin-bottom: 24px;
+  border-radius: 8px;
+  padding: 0 24px;
+}
+.order p:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+}
+.order p span:nth-child(1) {
+  font-size: var(--md);
+  font-weight: bold;
+}
+.order p:nth-child(2) {
+  text-align: end;
+  font-weight: bold;
+}
+.shopping-cart {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: center;
+}
+.shopping-cart figure {
+  margin: 0;
+}
+.shopping-cart figure img {
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+.shopping-cart p:nth-child(2) {
+  color: var(--very-light-pink);
+}
+.shopping-cart p:nth-child(3) {
+  font-size: var(--md);
+  font-weight: bold;
+}
+.primary-button {
+  background-color: var(--hospital-green);
+  border-radius: 8px;
+  border: none;
+  color: var(--white);
+  width: 100%;
+  cursor: pointer;
+  font-size: var(--md);
+  font-weight: bold;
+  height: 50px;
+}
+@media (max-width: 640px) {
+  .product-detail {
+    width: 100%;
+  }
+}
+
+.navbar-shopping-cart img {
+  cursor: pointer;
+}
